@@ -1,30 +1,28 @@
 import React, {Component} from 'react';
-// import './iterator-btns.css';
 
 export default class IteratorBtns extends Component {
 
     buttons = [
-      { name: 'increment', iconName: 'plus' },
-      { name: 'decrement', iconName: 'minus' }
+      { operandName: 'increment', iconName: 'plus' },
+      { operandName: 'decrement', iconName: 'minus' }
     ]
   
     render() {
-      const { iteratorCount, onIteratorChange } = this.props;
+      const { onIteratorChange } = this.props;
   
-      const buttons = this.buttons.map(({name, iconName}) => {
-        // const isActive = onfilter === name;
-        // console.log(onfilter)
-        // const clazz = isActive ? 'btn-info' : 'btn-outline-secondary' 
+      const buttons = this.buttons.map(({operandName, iconName}) => {
         return (
         <button type="button"
-            className={`btn btn-info`} key={name} onClick={() => onIteratorChange(name, iteratorCount)}>
+            className={`btn btn-info`}
+            key={operandName}
+            onClick={() => onIteratorChange(operandName)}>
             <i className={`fa fa-${iconName}`}></i>
         </button>
         );
       });
       
       return (
-        <div className="btn-group">
+        <div>
           {buttons}
         </div>
       );
