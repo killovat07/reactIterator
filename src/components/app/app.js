@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 
-// import IteratorPanel from '../iterator-panel/iterator-panel';
-// import IteratorBtns from '../iterator-btns/iterator-btns';
-
 import './app.css';
 
 export default class App extends Component {
 
   state = {
-    iteratorCount: 30, //default value
+    count: 30, //default value
   };
 
   setOperand(operand, currentCount){
@@ -22,9 +19,9 @@ export default class App extends Component {
     }
   };
 
-  onIteratorChange = (currentOperand) => {
-    const iteratorCount = this.setOperand(currentOperand, this.state.iteratorCount)
-    this.setState({iteratorCount})
+  onCounterChange = (currentOperand) => {
+    const count = this.setOperand(currentOperand, this.state.count)
+    this.setState({count})
   };
 
   buttons = [
@@ -33,24 +30,24 @@ export default class App extends Component {
   ];
 
   render(){
-    const { iteratorCount } = this.state;
+    const { count } = this.state;
 
     const buttons = this.buttons.map(({operandName, iconName, orderCount}) => {
       return (
       <button type="button"
           className={`btn btn-info order-${orderCount}`}
           key={operandName}
-          onClick={() => this.onIteratorChange(operandName)}>
+          onClick={() => this.onCounterChange(operandName)}>
           <i className={`fa fa-${iconName}`}></i>
       </button>
       );
     });
 
     return (
-      <div className="iterator-app">
-        <div class="main-title">Counter</div>
-        <div className="top-panel flex-row d-flex align-items-center justify-content-center">
-          <h1 class="order-2"><span class="badge badge-secondary">{iteratorCount}</span></h1>
+      <div className="counter-app">
+        <div class="counter-title">Counter</div>
+        <div className="counter-block flex-row d-flex align-items-center justify-content-center">
+          <h1 class="order-2"><span class="badge badge-secondary">{count}</span></h1>
           {buttons}
         </div>
       </div>
